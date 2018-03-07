@@ -10,11 +10,11 @@ const char* wordType1("prefixes");
 const char* wordType2("suffixes");
 
 void checkFileOpen(const char* filename);
-void countEntries(const char* filename, int &counterVar, const char* typeRun);
+void countEntries(const char* filename, int &counter, const char* typeRun);
 void clearArray (char* arrayName, const int arraySize); 
 void clearArray (char** arrayName, const int arraySize); 
-void populateArray(const char* filename, const int counterVar, const char* typeRun, char** arrayName);
-void generateCodename(char** const prefixArray, char** const suffixArray);
+void populateArray(const char* filename, const int counter, char** arrayName);
+void generateCodename(char** const pArray, char** const sArray, const int pCount, const int sCount);
 
 int main() {
     int prefixCount = 0, suffixCount = 0;
@@ -24,9 +24,9 @@ int main() {
     char* suffixArray[suffixCount];
     clearArray(prefixArray, prefixCount);
     clearArray(suffixArray, suffixCount);
-    populateArray(file1, prefixCount, wordType1, prefixArray);
-    populateArray(file2, suffixCount, wordType2, suffixArray);
-    generateCodename(prefixArray, suffixArray);
+    populateArray(file1, prefixCount, prefixArray);
+    populateArray(file2, suffixCount, suffixArray);
+    generateCodename(prefixArray, suffixArray, prefixCount, suffixCount);
     return 0;
 }
 
@@ -68,7 +68,7 @@ void clearArray (char** arrayName, const int arrayCount) {
     }
 }
 
-void populateArray(const char* filename, const int counterVar, const char* typeRun, char** arrayName) {
+void populateArray(const char* filename, const int counterVar, char** arrayName) {
     std::ifstream openFile(filename);
     int bufferSize = 16;
     char buffer[bufferSize];
@@ -82,21 +82,11 @@ void populateArray(const char* filename, const int counterVar, const char* typeR
     }
 }
 
-void generateCodename(char** const prefixArray, char** const suffixArray) {
-    srand(time(NULL));
-    std::cout << rand() << '\n';
-    std::cout << rand() << '\n';
-    std::cout << rand() << '\n';
-    std::cout << rand() << '\n';
-    std::cout << rand() << '\n';
-    std::cout << rand() << '\n';
-    std::cout << rand() << '\n';
-    std::cout << rand() << '\n';
-    std::cout << rand() << '\n';
-    std::cout << rand() << '\n';
-    std::cout << rand() << '\n';
-    std::cout << rand() << '\n';
-    std::cout << rand() << '\n';
-    std::cout << rand() << '\n';
-    std::cout << rand() << '\n';
+// The arrays will be accessed, but I don't want any of the elements to be changed by accident.
+void generateCodename(char** const pArray, char** const sArray, const int pCount, const int sCount) {
+    srand(time(NULL)); // Seeds the PRNG
+    int pChoice = rand() % pCount;
+    int sChoice = rand() % sCount;
+    std::cout << pChoice << '\n';
+    std::cout << sChoice << '\n';
 }
