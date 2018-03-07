@@ -18,11 +18,7 @@ Violet
 Cyan
 Pink
 
-Roman
-Chinese
-Indian
-Irish
-
+Lunging
 Grinning
 Praying
 Spinning
