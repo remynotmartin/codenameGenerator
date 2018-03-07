@@ -10,6 +10,7 @@ const char* file2("../data/suffixes.txt");
 
 void checkFileOpen(const char* filename);
 void countEntries(const char* filename, int &counterVar, const char* typeRun); // There are 42 Prefixes and 38 Suffixes
+void clearBufferArray (char* arrayName, const int arrayCount); 
 //void populateArray(const char* filename, int &counterVar, const char* typeRun, const char* arrayName);
 
 int main() {
@@ -31,16 +32,23 @@ void checkFileOpen(const char* filename) {
 
 void countEntries(const char* filename, int &wordCounter, const char* typeRun) {
     checkFileOpen(filename);
-    //std::cout << "We are currently looking at a file of " << typeRun << ".\n";
     std::ifstream openFile(filename);
-    std::string buffer = ""; // initialize empty string
+    int bufferSize = 16;
+    char buffer[bufferSize];
+    clearBufferArray(buffer, bufferSize);
     while (!openFile.eof()) {
         openFile >> buffer;
         if (openFile.eof())
             break;
-        //std::cout << buffer << '\n';
-        buffer.clear();
+        clearBufferArray(buffer, bufferSize);
         wordCounter++;
     }
     std::cout << "Commander, we counted " << wordCounter << ' ' << typeRun << ".\n";
+    openFile.close();
+}
+
+void clearBufferArray (char* arrayName, const int arrayCount) {
+    for (int i = 0; i > arrayCount; i++) {
+        arrayName[i] = 0;
+    }
 }
