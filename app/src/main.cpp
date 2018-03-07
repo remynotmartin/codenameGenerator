@@ -13,7 +13,8 @@ void checkFileOpen(const char* filename);
 void countEntries(const char* filename, int &counterVar, const char* typeRun);
 void clearArray (char* arrayName, const int arraySize); 
 void clearArray (char** arrayName, const int arraySize); 
-void populateArray(const char* filename, const int counterVar, const char* typeRun, const char* arrayName);
+void populateArray(const char* filename, const int counterVar, const char* typeRun, char** arrayName);
+void generateCodename(char** const prefixArray, char** const suffixArray);
 
 int main() {
     int prefixCount = 0, suffixCount = 0;
@@ -23,8 +24,9 @@ int main() {
     char* suffixArray[suffixCount];
     clearArray(prefixArray, prefixCount);
     clearArray(suffixArray, suffixCount);
-    //populateArray(file1, prefixCount, wordType1, prefixArray);
-    //populateArray(file2, suffixCount, wordType2, suffixArray);
+    populateArray(file1, prefixCount, wordType1, prefixArray);
+    populateArray(file2, suffixCount, wordType2, suffixArray);
+    generateCodename(prefixArray, suffixArray);
     return 0;
 }
 
@@ -50,7 +52,7 @@ void countEntries(const char* filename, int &wordCounter, const char* typeRun) {
         clearArray(buffer, bufferSize);
         wordCounter++;
     }
-    std::cout << "Commander, we counted " << wordCounter << ' ' << typeRun << ".\n";
+    //std::cout << "Commander, we counted " << wordCounter << ' ' << typeRun << ".\n";
     openFile.close();
 }
 
@@ -66,5 +68,35 @@ void clearArray (char** arrayName, const int arrayCount) {
     }
 }
 
-void populateArray(const char* filename, const int counterVar, const char* typeRun, const char* arrayName) {
+void populateArray(const char* filename, const int counterVar, const char* typeRun, char** arrayName) {
+    std::ifstream openFile(filename);
+    int bufferSize = 16;
+    char buffer[bufferSize];
+    clearArray(buffer, bufferSize);
+    for (int i = 0; i < counterVar; i++) {
+        openFile >> buffer;
+        if (openFile.eof())
+            break;
+        arrayName[i] = buffer;
+        clearArray(buffer, bufferSize);
+    }
+}
+
+void generateCodename(char** const prefixArray, char** const suffixArray) {
+    srand(time(NULL));
+    std::cout << rand() << '\n';
+    std::cout << rand() << '\n';
+    std::cout << rand() << '\n';
+    std::cout << rand() << '\n';
+    std::cout << rand() << '\n';
+    std::cout << rand() << '\n';
+    std::cout << rand() << '\n';
+    std::cout << rand() << '\n';
+    std::cout << rand() << '\n';
+    std::cout << rand() << '\n';
+    std::cout << rand() << '\n';
+    std::cout << rand() << '\n';
+    std::cout << rand() << '\n';
+    std::cout << rand() << '\n';
+    std::cout << rand() << '\n';
 }
