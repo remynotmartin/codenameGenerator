@@ -4,8 +4,8 @@
 #include <fstream>
 #include <cstdlib>
 
-const char* file1("../data/prefixes.txt");
-const char* file2("../data/suffixes.txt");
+const char* file1("../data/prefixes");
+const char* file2("../data/suffixes");
 const char* wordType1("prefixes");
 const char* wordType2("suffixes");
 
