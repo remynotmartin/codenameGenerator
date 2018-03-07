@@ -6,6 +6,9 @@ Bronze
 Diamond
 Aluminium
 Platinum
+Cobalt
+Carbon
+Iron
 
 Red
 Black
@@ -30,6 +33,7 @@ Crouching
 Howling
 Squinting
 Jumping
+Boasting
 
 Quiet
 Loud
@@ -39,7 +43,7 @@ Mad
 Wild
 Venom
 Decoy
-Jasmine
+Watchful
 
 Demented
 Tortured
