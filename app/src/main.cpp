@@ -2,6 +2,7 @@
 #include <iomanip>
 #include <ctime>
 #include <fstream>
+#include <string>
 #include <cstdlib>
 
 const char* file1("../data/prefixes");
@@ -12,16 +13,16 @@ const char* wordType2("suffixes");
 void checkFileOpen(const char* filename);
 void countEntries(const char* filename, int &counter, const char* typeRun);
 void clearArray (char* arrayName, const int arraySize); 
-void clearArray (char** arrayName, const int arraySize); 
-void populateArray(const char* filename, const int counter, char** arrayName);
-void generateCodename(char** const pArray, char** const sArray, const int pCount, const int sCount);
+void clearArray (std::string* arrayName, const int arraySize); 
+void populateArray(const char* filename, const int counter, std::string* arrayName);
+void generateCodename(std::string* const pArray, std::string* const sArray, const int pCount, const int sCount);
 
 int main() {
     int prefixCount = 0, suffixCount = 0;
     countEntries(file1, prefixCount, wordType1);
     countEntries(file2, suffixCount, wordType2); 
-    char* prefixArray[prefixCount];
-    char* suffixArray[suffixCount];
+    std::string prefixArray[prefixCount];
+    std::string suffixArray[suffixCount];
     clearArray(prefixArray, prefixCount);
     clearArray(suffixArray, suffixCount);
     populateArray(file1, prefixCount, prefixArray);
@@ -62,13 +63,13 @@ void clearArray (char* arrayName, const int arrayCount) {
     }
 }
 
-void clearArray (char** arrayName, const int arrayCount) {
+void clearArray (std::string* arrayName, const int arrayCount) {
     for (int i = 0; i > arrayCount; i++) {
         arrayName[i] = '\0'; // Each member is set to null
     }
 }
 
-void populateArray(const char* filename, const int counterVar, char** arrayName) {
+void populateArray(const char* filename, const int counterVar, std::string* arrayName) {
     std::ifstream openFile(filename);
     int bufferSize = 16;
     char buffer[bufferSize];
@@ -80,19 +81,13 @@ void populateArray(const char* filename, const int counterVar, char** arrayName)
         arrayName[i] = buffer;
         clearArray(buffer, bufferSize);
     }
-    for (int i = 0; i < counterVar; i++) {
-        std::cout << arrayName[i] << '\n'; 
-    }
     openFile.close();
 }
 
 // The arrays will be accessed, but I don't want any of the elements to be changed by accident.
-void generateCodename(char** const pArray, char** const sArray, const int pCount, const int sCount) {
+void generateCodename(std::string* const pArray, std::string* const sArray, const int pCount, const int sCount) {
     srand(time(NULL)); // Seeds the PRNG
     int pChoice = rand() % pCount;
     int sChoice = rand() % sCount;
-    std::cout << pArray[pChoice] << '\n';
-    std::cout << sArray[sChoice] << '\n';
-    std::cout << pChoice << '\n';
-    std::cout << sChoice << '\n';
+    std::cout << pArray[pChoice] << ' ' << sArray[sChoice] << '\n';
 }
