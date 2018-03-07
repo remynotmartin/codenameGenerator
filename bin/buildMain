@@ -1,7 +1,7 @@
 #!/bin/sh
 
-g++ -std=c++11 -Wall ../app/src/main.cpp -o ./latestBuild.out
+g++ -std=c++11 -Wall ../app/src/main.cpp -o ./a.out
 
-chmod 755 ./latestBuild.out
+chmod 755 ./a.out
 
-./latestBuild.out
+./a.out
