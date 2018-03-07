@@ -80,13 +80,10 @@ void populateArray(const char* filename, const int counterVar, char** arrayName)
         arrayName[i] = buffer;
         clearArray(buffer, bufferSize);
     }
-<<<<<<< HEAD
     for (int i = 0; i < counterVar; i++) {
         std::cout << arrayName[i] << '\n'; 
     }
     openFile.close();
-=======
->>>>>>> fb0361499d96f4b34142e67cb18c17d5061f81d5
 }
 
 // The arrays will be accessed, but I don't want any of the elements to be changed by accident.
@@ -94,11 +91,8 @@ void generateCodename(char** const pArray, char** const sArray, const int pCount
     srand(time(NULL)); // Seeds the PRNG
     int pChoice = rand() % pCount;
     int sChoice = rand() % sCount;
-<<<<<<< HEAD
     std::cout << pArray[pChoice] << '\n';
     std::cout << sArray[sChoice] << '\n';
-=======
     std::cout << pChoice << '\n';
     std::cout << sChoice << '\n';
->>>>>>> fb0361499d96f4b34142e67cb18c17d5061f81d5
 }
