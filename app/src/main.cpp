@@ -31,14 +31,16 @@ void checkFileOpen(const char* filename) {
 
 void countEntries(const char* filename, int &wordCounter, const char* typeRun) {
     checkFileOpen(filename);
-    std::cout << "We are currently looking at a file of " << typeRun << ".\n";
+    //std::cout << "We are currently looking at a file of " << typeRun << ".\n";
     std::ifstream openFile(filename);
     std::string buffer = ""; // initialize empty string
     while (!openFile.eof()) {
         openFile >> buffer;
         if (openFile.eof())
             break;
-        std::cout << buffer << '\n';
+        //std::cout << buffer << '\n';
         buffer.clear();
+        wordCounter++;
     }
+    std::cout << "Commander, we counted " << wordCounter << ' ' << typeRun << ".\n";
 }
