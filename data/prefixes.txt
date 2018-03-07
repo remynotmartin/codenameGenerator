@@ -40,3 +40,6 @@ Rigid
 Silky
 Slinky
 Decoy
+Howling
+Squinting
+Jasmine
